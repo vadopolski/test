@@ -1,0 +1,177 @@
+import org.apache.avro.AvroRuntimeException;
+import org.apache.avro.Schema;
+import org.apache.avro.Schema.Parser;
+import org.apache.avro.data.RecordBuilder;
+import org.apache.avro.specific.AvroGenerated;
+import org.apache.avro.specific.SpecificRecord;
+import org.apache.avro.specific.SpecificRecordBase;
+import org.apache.avro.specific.SpecificRecordBuilderBase;
+
+@AvroGenerated
+public class Order extends SpecificRecordBase implements SpecificRecord {
+    public static final Schema SCHEMA$ = (new Parser()).parse("{\"type\":\"record\",\"name\":\"DeliveryOrder2\",\"namespace\":\"com.test.order\",\"fields\":[{\"name\":\"snapshot\",\"type\":\"int\",\"default\":2},{\"name\":\"comment\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"default\":\"test\"}]}");
+    /** @deprecated */
+    @Deprecated
+    public int snapshot;
+    /** @deprecated */
+    @Deprecated
+    public String comment;
+
+    public static Schema getClassSchema() {
+        return SCHEMA$;
+    }
+
+    public Order() {
+    }
+
+    public Order(Integer snapshot, String comment) {
+        this.snapshot = snapshot;
+        this.comment = comment;
+    }
+
+    public Schema getSchema() {
+        return SCHEMA$;
+    }
+
+    public Object get(int field$) {
+        switch(field$) {
+            case 0:
+                return this.snapshot;
+            case 1:
+                return this.comment;
+            default:
+                throw new AvroRuntimeException("Bad index");
+        }
+    }
+
+    public void put(int field$, Object value$) {
+        switch(field$) {
+            case 0:
+                this.snapshot = (Integer)value$;
+                break;
+            case 1:
+                this.comment = (String)value$;
+                break;
+            default:
+                throw new AvroRuntimeException("Bad index");
+        }
+
+    }
+
+    public Integer getSnapshot() {
+        return this.snapshot;
+    }
+
+    public void setSnapshot(Integer value) {
+        this.snapshot = value;
+    }
+
+    public String getComment() {
+        return this.comment;
+    }
+
+    public void setComment(String value) {
+        this.comment = value;
+    }
+
+    public static Order.Builder newBuilder() {
+        return new Order.Builder();
+    }
+
+    public static Order.Builder newBuilder(Order.Builder other) {
+        return new Order.Builder(other);
+    }
+
+    public static Order.Builder newBuilder(Order other) {
+        return new Order.Builder(other);
+    }
+
+    public static class Builder extends SpecificRecordBuilderBase<Order> implements RecordBuilder<Order> {
+        private int snapshot;
+        private String comment;
+
+        private Builder() {
+            super(Order.SCHEMA$);
+        }
+
+        private Builder(Order.Builder other) {
+            super(other);
+            if (isValidValue(this.fields()[0], other.snapshot)) {
+                this.snapshot = (Integer)this.data().deepCopy(this.fields()[0].schema(), other.snapshot);
+                this.fieldSetFlags()[0] = true;
+            }
+
+            if (isValidValue(this.fields()[1], other.comment)) {
+                this.comment = (String)this.data().deepCopy(this.fields()[1].schema(), other.comment);
+                this.fieldSetFlags()[1] = true;
+            }
+
+        }
+
+        private Builder(Order other) {
+            super(Order.SCHEMA$);
+            if (isValidValue(this.fields()[0], other.snapshot)) {
+                this.snapshot = (Integer)this.data().deepCopy(this.fields()[0].schema(), other.snapshot);
+                this.fieldSetFlags()[0] = true;
+            }
+
+            if (isValidValue(this.fields()[1], other.comment)) {
+                this.comment = (String)this.data().deepCopy(this.fields()[1].schema(), other.comment);
+                this.fieldSetFlags()[1] = true;
+            }
+
+        }
+
+        public Integer getSnapshot() {
+            return this.snapshot;
+        }
+
+        public Order.Builder setSnapshot(int value) {
+            this.validate(this.fields()[0], value);
+            this.snapshot = value;
+            this.fieldSetFlags()[0] = true;
+            return this;
+        }
+
+        public boolean hasSnapshot() {
+            return this.fieldSetFlags()[0];
+        }
+
+        public Order.Builder clearSnapshot() {
+            this.fieldSetFlags()[0] = false;
+            return this;
+        }
+
+        public String getComment() {
+            return this.comment;
+        }
+
+        public Order.Builder setComment(String value) {
+            this.validate(this.fields()[1], value);
+            this.comment = value;
+            this.fieldSetFlags()[1] = true;
+            return this;
+        }
+
+        public boolean hasComment() {
+            return this.fieldSetFlags()[1];
+        }
+
+        public Order.Builder clearComment() {
+            this.comment = null;
+            this.fieldSetFlags()[1] = false;
+            return this;
+        }
+
+        public Order build() {
+            try {
+                Order record = new Order();
+                record.snapshot = this.fieldSetFlags()[0] ? this.snapshot : (Integer)this.defaultValue(this.fields()[0]);
+                record.comment = this.fieldSetFlags()[1] ? this.comment : (String)this.defaultValue(this.fields()[1]);
+                return record;
+            } catch (Exception var2) {
+                throw new AvroRuntimeException(var2);
+            }
+        }
+    }
+}
